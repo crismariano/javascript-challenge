@@ -2,8 +2,10 @@
 var tableData = data;
 // console.log(tableData);
 
-// YOUR CODE HERE!
+// Get a reference to the table body
+var tbody = d3.select("tbody");
 
+// YOUR CODE HERE!
 // Select the button
 var button = d3.select("#filter-btn");
 
@@ -33,5 +35,12 @@ function runEnter() {
 
     console.log(filteredData);
 
-
-}
+    // Show UFO data on web page
+    tableData.forEach((ufoReport) => {
+        var row = tbody.append("tr");
+        Object.entries(ufoReport).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });
+};
