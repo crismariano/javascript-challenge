@@ -7,40 +7,41 @@ var tbody = d3.select("tbody");
 
 // YOUR CODE HERE!
 // Select the button
+// Select the button
 var button = d3.select("#filter-btn");
 
 // Select the form
-var form = d3.select(".form-group");
+var form = d3.select("#form");
 
-// Create event handlers
+// Create event handlers 
 button.on("click", runEnter);
-form.on("submit", runEnter);
+form.on("submit",runEnter);
 
 // Complete the event handler function for the form
 function runEnter() {
 
-    // Prevent the page from refreshing
-    d3.event.preventDefault();
+  // Prevent the page from refreshing
+  d3.event.preventDefault();
+  
+  // Select the input element and get the raw HTML node
+  var inputElement = d3.select("#datetime");
 
-    // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+  // Get the value property of the input element
+  var inputValue = inputElement.property("value");
 
-    // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+  console.log(inputValue);
+  console.log(tableData);
 
-    console.log(inputValue);
-    console.log(tableData);
+  var filteredData = tableData.filter(ufo => ufo.datetime === inputValue);
 
-    var filteredData = tableData.filter(ufo => ufo.datetime === inputValue);
+  console.log(filteredData);
 
-    console.log(filteredData);
-
-    // Show UFO data on web page
-    tableData.forEach((ufoReport) => {
-        var row = tbody.append("tr");
-        Object.entries(ufoReport).forEach(([key, value]) => {
-          var cell = row.append("td");
-          cell.text(value);
-        });
-      });
+  // Show UFO Data on Web Page
+  filteredData.forEach((ufoReport) => {
+    var row = tbody.append("tr");
+    Object.entries(ufoReport).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.text(value);
+    });
+  });
 };
