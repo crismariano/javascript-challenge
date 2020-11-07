@@ -6,3 +6,6 @@
   See UFO level 1 folder for app.js file
 
 
+### Level 2 Multiple Search Categories
+  Attempted to complete this part of the assignment.  The filter works if only 1 filter selection is choosen.
+  
